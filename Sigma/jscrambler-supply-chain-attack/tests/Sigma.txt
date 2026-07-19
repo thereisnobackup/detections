@@ -1,0 +1,99 @@
+3.1. test_logsource.py
+/opt/sigma$ python3 tests/test_logsource.py
+...
+----------------------------------------------------------------------
+Ran 3 tests in 41.570s
+
+OK
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.2. test_rules.py
+/opt/sigma$ python3 tests/test_rules.py
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 114.230s
+
+OK
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.3. Sigma CLI validation
+/opt/sigma$ sigma check --fail-on-error --fail-on-issues --validation-config tests/sigma_cli_conf.yml rules/ rules-emerging-threats/ rules-threat-hunting/ rules-compliance/
+Parsing Sigma rules  [####################################]  100%          
+Parsing Sigma rules  [####################################]  100%          
+Parsing Sigma rules  [####################################]  100%
+Parsing Sigma rules  [####################################]  100%
+Checking Sigma rules  [####################################]  100%          
+
+=== Summary ===
+Found 0 errors, 0 condition errors and 0 issues.
+No rule errors found.
+No condition errors found.
+No validation issues found.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.4. Baseline FP check (optional, Windows rules only)
+/opt/sigma$ bash tests/check-baseline-local.sh
+
+Copy rules from /opt/sigma to /tmp/tmp.WZmckgr43J
+
+Remove deprecated rules
+
+Download evtx-sigma-checker
+evtx-sigma-checker                                 100%[================================================================================================================>]   5,62M  12,7MB/s    in 0,4s    
+2026-07-18 18:37:04 URL:https://release-assets.githubusercontent.com/github-production-release-asset/460808865/6305d0fb-93f3-43d0-bf14-3084f854139a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-07-18T22%3A31%3A50Z&rscd=attachment%3B+filename%3Devtx-sigma-checker&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-07-18T21%3A31%3A26Z&ske=2026-07-18T22%3A31%3A50Z&sks=b&skv=2018-11-09&sig=Y9Fi711UuqRmIJP94syQNv%2Bf0PilNM2pnE6nWkDkZkE%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4NDQxMDkyNCwibmJmIjoxNzg0NDEwNjI0LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.6EZ0VY7zl99GolU3e308hAfatBJ8oT_SubNJ4jsdEPc&response-content-disposition=attachment%3B%20filename%3Devtx-sigma-checker&response-content-type=application%2Foctet-stream [5892763/5892763] -> "evtx-sigma-checker" [1]
+
+
+Starting EVTX checking in parallel...
+===>  Waiting for PID 40139 / Windows 7 32-bit
+  Checking for Sigma matches in Windows 7 32-bit baseline
+  Checking for Sigma matches in Windows 2022 baseline (this takes around 1 minute)
+  Finished Checking for Sigma matches in Windows 7 32-bit baseline
+===>  Waiting for PID 40140 / Windows 2022
+  Checking for Sigma matches in Windows 10 baseline (this takes around 2 minutes)                                                                                                                           
+  Finished Checking for Sigma matches in Windows 2022 baseline
+===>  Waiting for PID 40142 / Windows 10
+  Checking for Sigma matches in Windows 2022 AD baseline (this takes around 2 minutes)                                                                                                                      
+  Checking for Sigma matches in Windows 11 baseline (this takes around 3 minutes)                                                                                                                           
+  Checking for Sigma matches in Windows 11 2023 baseline (this takes around 3 minutes)                                                                                                                      
+  Checking for Sigma matches in Windows 2022.0.20348 Azure baseline (this takes around 3 minutes)                                                                                                           
+  Finished Checking for Sigma matches in Windows 2022 AD baseline                                                                                                                                           
+  Finished Checking for Sigma matches in Windows 10 baselineational.evtx                                                                                                                                    
+===>  Waiting for PID 40144 / Windows 2022 AD
+===>  Waiting for PID 40146 / Windows 11
+  Finished Checking for Sigma matches in Windows 11 baselineational.evtx                                                                                                                                    
+===>  Waiting for PID 40148 / Windows 11 2023
+  Finished Checking for Sigma matches in Windows 11 2023 baselinex                                                                                                                                          
+===>  Waiting for PID 40150 / Windows 2022.0.20348 Azure
+  Finished Checking for Sigma matches in Windows 2022.0.20348 Azure baseline                                                                                                                                
+
+###############
+##  MATCHES  ##
+###############
+
+Windows 7 32-bit:
+No matches found.
+
+Windows 10:
+No matches found.
+
+Windows 11:
+No matches found.
+
+Windows 11 2023:
+No matches found.
+
+Windows 2022:
+No matches found.
+
+Windows 2022 AD:
+No matches found.
+
+Windows 2022.0.20348 Azure:
+No matches found.
+
+Removing temporary directory /tmp/tmp.WZmckgr43J. Press Enter to continue.
+Removed /tmp/tmp.WZmckgr43J
+Finished

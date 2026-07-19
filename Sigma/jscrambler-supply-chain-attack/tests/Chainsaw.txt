@@ -1,0 +1,132 @@
+/opt/chainsaw$ ./chainsaw hunt --sigma /opt/sigma/rules-emerging-threats/2026/Malware/Jscrambler-npm-package-compromised/ --mapping mappings/sigma-event-logs-all.yml ~/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx 
+
+ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗███████╗ █████╗ ██╗    ██╗
+██╔════╝██║  ██║██╔══██╗██║████╗  ██║██╔════╝██╔══██╗██║    ██║
+██║     ███████║███████║██║██╔██╗ ██║███████╗███████║██║ █╗ ██║
+██║     ██╔══██║██╔══██║██║██║╚██╗██║╚════██║██╔══██║██║███╗██║
+╚██████╗██║  ██║██║  ██║██║██║ ╚████║███████║██║  ██║╚███╔███╔╝
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝
+    By WithSecure Countercept (@FranticTyping, @AlexKornitzer)
+
+[+] Loading detection rules from: /opt/sigma/rules-emerging-threats/2026/Malware/Jscrambler-npm-package-compromised/
+[+] Loaded 1 detection rules
+[+] Loading forensic artefacts from: /home/user/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx (extensions: .evtx, .evt)
+[+] Loaded 1 forensic artefacts (6.1 MiB)
+[+] Current Artifact: /home/user/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx
+[+] Hunting [========================================] 1/1   [00:00:00]                                                                                                                   
+[+] Group: Sigma
+┌─────────────────────┬───────────────────────────────┬───────┬──────────────────────────┬──────────┬───────────┬──────────┬────────────────────────────────┐
+│      timestamp      │          detections           │ count │  Event.System.Provider   │ Event ID │ Record ID │ Computer │           Event Data           │
+├─────────────────────┼───────────────────────────────┼───────┼──────────────────────────┼──────────┼───────────┼──────────┼────────────────────────────────┤
+│ 2026-07-18 15:17:10 │ ‣ Execution Of Binary Dropped │ 1     │ Microsoft-Windows-Sysmon │ 1        │ 3029044   │ malz-lab │ Image: C:\Users\malz.lab\AppDa │
+│                     │ By Compromised Jscrambler     │       │                          │          │           │          │ ta\Local\Temp\.hwo102209lk.exe │
+│                     │ Npm Package                   │       │                          │          │           │          │ RuleName: '-'                  │
+│                     │                               │       │                          │          │           │          │ Description: '-'               │
+│                     │                               │       │                          │          │           │          │ OriginalFileName: '-'          │
+│                     │                               │       │                          │          │           │          │ TerminalSessionId: 1           │
+│                     │                               │       │                          │          │           │          │ ParentCommandLine: node dist/s │
+│                     │                               │       │                          │          │           │          │ etup.js                        │
+│                     │                               │       │                          │          │           │          │ Product: '-'                   │
+│                     │                               │       │                          │          │           │          │ Company: '-'                   │
+│                     │                               │       │                          │          │           │          │ ParentProcessId: 9908          │
+│                     │                               │       │                          │          │           │          │ ParentUser: MALZ-LAB\malz.lab  │
+│                     │                               │       │                          │          │           │          │ LogonGuid: 6BD7F572-968E-6A5B- │
+│                     │                               │       │                          │          │           │          │ 0190-030000000000              │
+│                     │                               │       │                          │          │           │          │ Hashes: SHA1=B9C8B84157C14472D │
+│                     │                               │       │                          │          │           │          │ 51B3413924D4FFBE33BC8D4,MD5=1C │
+│                     │                               │       │                          │          │           │          │ 994AC44036ADA0AE80A1A864774F3E │
+│                     │                               │       │                          │          │           │          │ ,SHA256=B7CA95D1B23C8E67416A25 │
+│                     │                               │       │                          │          │           │          │ CEDF741DE0917C2096BBC9D24649EE │
+│                     │                               │       │                          │          │           │          │ A7853D054903,IMPHASH=5FB430E01 │
+│                     │                               │       │                          │          │           │          │ 3CA985722E846E9017A2C3B        │
+│                     │                               │       │                          │          │           │          │ ParentProcessGuid: 6BD7F572-98 │
+│                     │                               │       │                          │          │           │          │ F6-6A5B-4001-000000001B00      │
+│                     │                               │       │                          │          │           │          │ ProcessId: 9628                │
+│                     │                               │       │                          │          │           │          │ CurrentDirectory: C:\Users\mal │
+│                     │                               │       │                          │          │           │          │ z.lab\Desktop\jscrambler-8.14. │
+│                     │                               │       │                          │          │           │          │ 0\                             │
+│                     │                               │       │                          │          │           │          │ ProcessGuid: 6BD7F572-98F6-6A5 │
+│                     │                               │       │                          │          │           │          │ B-4101-000000001B00            │
+│                     │                               │       │                          │          │           │          │ CommandLine: C:\Users\malz.lab │
+│                     │                               │       │                          │          │           │          │ \AppData\Local\Temp\.hwo102209 │
+│                     │                               │       │                          │          │           │          │ lk.exe                         │
+│                     │                               │       │                          │          │           │          │ FileVersion: '-'               │
+│                     │                               │       │                          │          │           │          │ User: MALZ-LAB\malz.lab        │
+│                     │                               │       │                          │          │           │          │ LogonId: '0x39001'             │
+│                     │                               │       │                          │          │           │          │ IntegrityLevel: High           │
+│                     │                               │       │                          │          │           │          │ ParentImage: C:\Program Files\ │
+│                     │                               │       │                          │          │           │          │ nodejs\node.exe                │
+│                     │                               │       │                          │          │           │          │ UtcTime: 2026-07-18 15:17:10.7 │
+│                     │                               │       │                          │          │           │          │ 77                             │
+└─────────────────────┴───────────────────────────────┴───────┴──────────────────────────┴──────────┴───────────┴──────────┴────────────────────────────────┘
+
+[+] 1 Detections found on 1 documents
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/opt/chainsaw$ ./chainsaw hunt --sigma /opt/sigma/rules-threat-hunting/windows/process_creation/proc_creation_win_temp_dir_binary_exec_by_node.yml --mapping mappings/sigma-e
+vent-logs-all.yml ~/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx 
+
+ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗███████╗ █████╗ ██╗    ██╗
+██╔════╝██║  ██║██╔══██╗██║████╗  ██║██╔════╝██╔══██╗██║    ██║
+██║     ███████║███████║██║██╔██╗ ██║███████╗███████║██║ █╗ ██║
+██║     ██╔══██║██╔══██║██║██║╚██╗██║╚════██║██╔══██║██║███╗██║
+╚██████╗██║  ██║██║  ██║██║██║ ╚████║███████║██║  ██║╚███╔███╔╝
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝
+    By WithSecure Countercept (@FranticTyping, @AlexKornitzer)
+
+[+] Loading detection rules from: /opt/sigma/rules-threat-hunting/windows/process_creation/proc_creation_win_temp_dir_binary_exec_by_node.yml
+[+] Loaded 1 detection rules
+[+] Loading forensic artefacts from: /home/user/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx (extensions: .evt, .evtx)
+[+] Loaded 1 forensic artefacts (6.1 MiB)
+[+] Current Artifact: /home/user/Documents/Detections/Sigma/jscrambler-supply-chain-attack/events/sysmon_20260718_151654.evtx
+[+] Hunting [========================================] 1/1   [00:00:00]                                                                                                                   
+[+] Group: Sigma
+┌─────────────────────┬────────────────────────┬───────┬──────────────────────────┬──────────┬───────────┬──────────┬────────────────────────────────┐
+│      timestamp      │       detections       │ count │  Event.System.Provider   │ Event ID │ Record ID │ Computer │           Event Data           │
+├─────────────────────┼────────────────────────┼───────┼──────────────────────────┼──────────┼───────────┼──────────┼────────────────────────────────┤
+│ 2026-07-18 15:17:10 │ ‣ Binary Executed From │ 1     │ Microsoft-Windows-Sysmon │ 1        │ 3029044   │ malz-lab │ Image: C:\Users\malz.lab\AppDa │
+│                     │ A Temporal Directory   │       │                          │          │           │          │ ta\Local\Temp\.hwo102209lk.exe │
+│                     │ By Node                │       │                          │          │           │          │ RuleName: '-'                  │
+│                     │                        │       │                          │          │           │          │ Description: '-'               │
+│                     │                        │       │                          │          │           │          │ OriginalFileName: '-'          │
+│                     │                        │       │                          │          │           │          │ TerminalSessionId: 1           │
+│                     │                        │       │                          │          │           │          │ ParentCommandLine: node dist/s │
+│                     │                        │       │                          │          │           │          │ etup.js                        │
+│                     │                        │       │                          │          │           │          │ Product: '-'                   │
+│                     │                        │       │                          │          │           │          │ Company: '-'                   │
+│                     │                        │       │                          │          │           │          │ ParentProcessId: 9908          │
+│                     │                        │       │                          │          │           │          │ ParentUser: MALZ-LAB\malz.lab  │
+│                     │                        │       │                          │          │           │          │ LogonGuid: 6BD7F572-968E-6A5B- │
+│                     │                        │       │                          │          │           │          │ 0190-030000000000              │
+│                     │                        │       │                          │          │           │          │ Hashes: SHA1=B9C8B84157C14472D │
+│                     │                        │       │                          │          │           │          │ 51B3413924D4FFBE33BC8D4,MD5=1C │
+│                     │                        │       │                          │          │           │          │ 994AC44036ADA0AE80A1A864774F3E │
+│                     │                        │       │                          │          │           │          │ ,SHA256=B7CA95D1B23C8E67416A25 │
+│                     │                        │       │                          │          │           │          │ CEDF741DE0917C2096BBC9D24649EE │
+│                     │                        │       │                          │          │           │          │ A7853D054903,IMPHASH=5FB430E01 │
+│                     │                        │       │                          │          │           │          │ 3CA985722E846E9017A2C3B        │
+│                     │                        │       │                          │          │           │          │ ParentProcessGuid: 6BD7F572-98 │
+│                     │                        │       │                          │          │           │          │ F6-6A5B-4001-000000001B00      │
+│                     │                        │       │                          │          │           │          │ ProcessId: 9628                │
+│                     │                        │       │                          │          │           │          │ CurrentDirectory: C:\Users\mal │
+│                     │                        │       │                          │          │           │          │ z.lab\Desktop\jscrambler-8.14. │
+│                     │                        │       │                          │          │           │          │ 0\                             │
+│                     │                        │       │                          │          │           │          │ ProcessGuid: 6BD7F572-98F6-6A5 │
+│                     │                        │       │                          │          │           │          │ B-4101-000000001B00            │
+│                     │                        │       │                          │          │           │          │ CommandLine: C:\Users\malz.lab │
+│                     │                        │       │                          │          │           │          │ \AppData\Local\Temp\.hwo102209 │
+│                     │                        │       │                          │          │           │          │ lk.exe                         │
+│                     │                        │       │                          │          │           │          │ FileVersion: '-'               │
+│                     │                        │       │                          │          │           │          │ User: MALZ-LAB\malz.lab        │
+│                     │                        │       │                          │          │           │          │ LogonId: '0x39001'             │
+│                     │                        │       │                          │          │           │          │ IntegrityLevel: High           │
+│                     │                        │       │                          │          │           │          │ ParentImage: C:\Program Files\ │
+│                     │                        │       │                          │          │           │          │ nodejs\node.exe                │
+│                     │                        │       │                          │          │           │          │ UtcTime: 2026-07-18 15:17:10.7 │
+│                     │                        │       │                          │          │           │          │ 77                             │
+└─────────────────────┴────────────────────────┴───────┴──────────────────────────┴──────────┴───────────┴──────────┴────────────────────────────────┘
+
+[+] 1 Detections found on 1 documents
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
