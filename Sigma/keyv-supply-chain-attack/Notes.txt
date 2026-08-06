@@ -1,0 +1,212 @@
+- Process tree
+"C:\Windows\system32\cmd.exe" /c npm install C:\Users\malz.lab\Desktop\keyv (13192)
+└─ "C:\Program Files\nodejs\\node.exe" "C:\Program Files\nodejs\\node_modules\npm\bin\npm-cli.js" install C:\Users\malz.lab\Desktop\keyv (12672)
+   └─ C:\Windows\system32\cmd.exe /d /s /c node setup.mjs (4836)
+      └─ node setup.mjs (916)
+         ├─ powershell -Help (340)
+         ├─ powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath 'C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun-windows-x64-baseline.zip' -DestinationPath 'C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw' -Force" (8872)
+         └─ C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js (13264)
+            └─ C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js (2512)
+               └─ C:\Windows\system32\cmd.exe /d /s /c "gh auth token" (10332)
+                  └─ conhost.exe 0xffffffff -ForceV1 (12316)
+
+
+- DNS Query
+
+/opt/chainsaw$ ./chainsaw search -i -t 'Event.System.EventID: =22' -e '12672|4836|916|340|8872|13264|2512|10332|12316' sysmon_20260805_231754.evtx | grep -E "ProcessId|QueryName|QueryResults|Image"
+
+ProcessId: 12672
+    QueryName: registry.npmjs{.}org
+    QueryResults: ::ffff:104.16.2.34;::ffff:104.16.11.34;::ffff:104.16.4.34;::ffff:104.16.9.34;::ffff:104.16.6.34;::ffff:104.16.1.34;::ffff:104.16.8.34;::ffff:104.16.5.34;::ffff:104.16.3.34;::ffff:104.16.7.34;::ffff:104.16.10.34;::ffff:104.16.0.34;
+    Image: C:\Program Files\nodejs\node.exe
+
+ProcessId: 916
+    QueryName: github{.}com
+    QueryResults: ::ffff:140.82.114.4;
+    Image: C:\Program Files\nodejs\node.exe
+    
+ProcessId: 916
+    QueryName: release-assets.githubusercontent{.}com
+    QueryResults: ::ffff:185.199.108.133;::ffff:185.199.110.133;::ffff:185.199.111.133;::ffff:185.199.109.133;
+    Image: C:\Program Files\nodejs\node.exe
+    
+ProcessId: 2512
+    QueryName: eth.llamarpc{.}com
+    QueryResults: ::ffff:104.21.67.22;::ffff:172.67.167.200;
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    
+ProcessId: 2512
+    QueryName: go.getblock{.}io
+    QueryResults: ::ffff:185.44.207.219;::ffff:185.44.207.217;::ffff:185.44.207.215;::ffff:185.44.207.218;
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    
+ProcessId: 2512
+    QueryName: eth-mainnet.nodereal{.}io
+    QueryResults: 'type:  5 a05687dbbbdb10136.awsglobalaccelerator.com;::ffff:75.2.124.189;::ffff:99.83.134.103;'
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    
+ProcessId: 2512
+    QueryName: awqhnjewqjkl{.}icu
+    QueryResults: ::ffff:104.21.91.101;::ffff:172.67.215.154;
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    
+ProcessId: 2512
+    QueryName: awqhnjewqjkl{.}icu
+    QueryResults: ::ffff:104.21.91.101;::ffff:172.67.215.154;
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    
+ProcessId: 2512
+    QueryName: awqhnjewqjkl{.}icu
+    QueryResults: ::ffff:104.21.91.101;::ffff:172.67.215.154;
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+   
+
+- Network connection
+
+/opt/chainsaw$ ./chainsaw search -i -t 'Event.System.EventID: =3' -e '12672|4836|916|340|8872|13264|2512|10332|12316' sysmon_20260805_231754.evtx | grep -E "ProcessId|Image|Protocol|DestinationIp|DestinationHostname|DestinationPort"
+
+ProcessId: 12672
+    Image: C:\Program Files\nodejs\node.exe
+    Protocol: tcp
+    DestinationIp: 104.16.2.34
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 916
+    Image: C:\Program Files\nodejs\node.exe
+    Protocol: tcp
+    DestinationIp: 140.82.114.4
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 916
+    Image: C:\Program Files\nodejs\node.exe
+    Protocol: tcp
+    DestinationIp: 185.199.108.133
+    DestinationHostname: cdn-185-199-108-133.github.com
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 172.67.167.200
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 104.21.67.22
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 185.44.207.219
+    DestinationHostname: dsde1976.fornex.org
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 75.2.124.189
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 99.83.134.103
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 104.21.91.101
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 172.67.215.154
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 104.21.91.101
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+ProcessId: 2512
+    Image: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe
+    Protocol: tcp
+    DestinationIp: 172.67.215.154
+    DestinationHostname: '-'
+    DestinationPort: 443
+    DestinationPortName: https
+    
+
+- Process creation
+
+/opt/chainsaw$ ./chainsaw search -i -t 'Event.System.EventID: =1' -e '12672|4836|916|340|8872|13264|2512|10332|12316' sysmon_20260805_231754.evtx| grep -E "ProcessId|CommandLine"
+
+ProcessId: 12672
+    CommandLine: '"C:\Program Files\nodejs\\node.exe"  "C:\Program Files\nodejs\\node_modules\npm\bin\npm-cli.js" install C:\Users\malz.lab\Desktop\keyv'
+    ParentProcessId: 13192
+    ParentCommandLine: '"C:\Windows\system32\cmd.exe" /c npm install C:\Users\malz.lab\Desktop\keyv '
+    
+ProcessId: 4836
+    CommandLine: C:\Windows\system32\cmd.exe /d /s /c node setup.mjs
+    ParentProcessId: 12672
+    ParentCommandLine: '"C:\Program Files\nodejs\\node.exe"  "C:\Program Files\nodejs\\node_modules\npm\bin\npm-cli.js" install C:\Users\malz.lab\Desktop\keyv'
+    
+ProcessId: 916
+    CommandLine: node  setup.mjs
+    ParentProcessId: 4836
+    ParentCommandLine: C:\Windows\system32\cmd.exe /d /s /c node setup.mjs
+    
+ProcessId: 340
+    CommandLine: powershell -Help
+    ParentProcessId: 916
+    ParentCommandLine: node  setup.mjs
+    
+ProcessId: 8872
+    CommandLine: powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath 'C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun-windows-x64-baseline.zip' -DestinationPath 'C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw' -Force"
+    ParentProcessId: 916
+    ParentCommandLine: node  setup.mjs
+    
+ ProcessId: 13264
+    CommandLine: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js
+    ParentProcessId: 916
+    ParentCommandLine: node  setup.mjs
+    
+ProcessId: 2512
+    CommandLine: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js
+    ParentProcessId: 13264
+    ParentCommandLine: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js
+    
+ProcessId: 10332
+    CommandLine: C:\Windows\system32\cmd.exe /d /s /c "gh auth token"
+    ParentProcessId: 2512
+    ParentCommandLine: C:\Users\malz.lab\AppData\Local\Temp\bun-dl-64O6hw\bun.exe C:\Users\malz.lab\Desktop\keyv\Math_Symbol.js
+    
+ProcessId: 12316
+    CommandLine: \??\C:\Windows\system32\conhost.exe 0xffffffff -ForceV1
+    ParentProcessId: 10332
+    ParentCommandLine: C:\Windows\system32\cmd.exe /d /s /c "gh auth token"

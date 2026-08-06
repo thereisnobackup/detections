@@ -1,0 +1,37 @@
+title: GitHub Credential Access Attempt via Bun Process in Temp Directory
+id: dcfc9d76-da69-4119-a39c-c92de13ebb48
+status: experimental
+description: |
+    Detects an attempt to access GitHub CLI credentials ("gh auth token")
+    from a Bun runtime process executing out of a temp directory. Matches
+    malicious npm packages that drop Bun into temp via a preinstall script,
+    run a payload with it, and steal the local GitHub auth token for repo
+    access or further propagation.
+references:
+    - https://socket.dev/supply-chain-attacks/keyv-and-cacheable-compromise
+author: thereisnobackup
+date: 2026-08-05
+tags:
+    - attack.initial-access
+    - attack.t1195.001
+    - attack.execution
+    - attack.t1059.007
+    - attack.stealth
+    - attack.t1027.009
+    - detection.emerging-threats
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_temp_path:
+        ParentImage|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+    selection_bun:
+        ParentImage|contains: '\bun'
+    selection_cmdline:
+        CommandLine|contains: 'gh auth token'
+    condition: all of selection_*
+falsepositives:
+    - Unknown
+level: medium
