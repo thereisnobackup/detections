@@ -1,0 +1,34 @@
+title: Preinstall Loader Spawns Bun to Execute Payload
+id: 8d4f1c26-7b3a-4e95-a2d0-1c6e8f5b9a37
+status: experimental
+description: |
+  Detects the loader chain: an npm preinstall hook runs node lib/setup.mjs, which launches the worm payload lib/Math_Symbol.js with Bun.
+references:
+  - https://socket.dev/blog/tensorlake-compromise
+author: thereisnobackup ft. claude
+date: 2026-10-13
+tags:
+    - attack.initial-access
+    - attack.t1195.001
+    - attack.execution
+    - attack.t1059.007
+    - attack.stealth
+    - attack.t1027.009
+    - detection.emerging-threats
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    ParentImage|contains: 'node'
+    ParentCommandLine|contains:
+      - 'lib/setup.mjs'
+      - 'lib\setup.mjs'
+    Image|contains: 'bun'
+    CommandLine|contains:
+      - 'lib\Math_Symbol.js'
+      - 'lib/Math_Symbol.js'
+  condition: selection
+falsepositives:
+  - Unlikely
+level: high
