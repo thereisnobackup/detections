@@ -1,0 +1,36 @@
+title: Blockchain C2 Lookup By JS Runtime
+id: 522355f6-01dc-4101-9190-7fecfc445b45
+status: experimental
+description: Detects bun.exe or node.exe running from Temp and resolving Ethereum RPC nodes, a technique used by malicious npm packages to fetch C2 from a smart contract.
+references:
+  - https://socket.dev/blog/tensorlake-compromise
+  - https://www.wiz.io/blog/keyv-and-cacheable-npm-supply-chain-attack
+author: thereisnobackup ft. claude
+date: 2026-10-18
+tags:
+    - attack.command-and-control
+    - attack.t1102.001
+    - detection.emerging-threats
+logsource:
+  category: dns_query
+  product: windows
+detection:
+    selection_query:
+        QueryName|contains:
+            - 'eth.llamarpc.com'
+            - 'rpc.ankr.com'
+            - 'ethereum.publicnode.com'
+            - 'eth-mainnet.nodereal.io'
+            - 'go.getblock.io'
+    selection_image:
+        Image|endswith:
+            - '\bun.exe'
+            - '\node.exe'
+    selection_path:
+        Image|contains:
+            - '\AppData\Local\Temp\'
+            - '\Windows\Temp\'
+    condition: all of selection_*
+falsepositives:
+  - Unknown
+level: medium
