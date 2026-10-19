@@ -5,6 +5,7 @@ description: Detects bun.exe or node.exe running from Temp and resolving Ethereu
 references:
   - https://socket.dev/blog/tensorlake-compromise
   - https://www.wiz.io/blog/keyv-and-cacheable-npm-supply-chain-attack
+  - https://securitylabs.datadoghq.com/articles/compromised-asyncapi-npm-packages/
 author: thereisnobackup ft. claude
 date: 2026-10-18
 tags:
@@ -22,6 +23,7 @@ detection:
             - 'ethereum.publicnode.com'
             - 'eth-mainnet.nodereal.io'
             - 'go.getblock.io'
+            - 'ethereum-rpc.publicnode.com'
     selection_image:
         Image|endswith:
             - '\bun.exe'
